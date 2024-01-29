@@ -17,6 +17,7 @@
     &__wrapper {
       overflow: hidden;
       border-radius: 10px;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
     }
 
     &:hover {
@@ -30,8 +31,7 @@
     cursor: pointer;
     font-size: 20px;
     letter-spacing: 1%;
-    margin-bottom: 20px;
-    margin: 0 auto 10px auto;
+    margin: 15px 0;
   }
   &__title:hover {
     font-weight: 800;
@@ -39,17 +39,17 @@
 
   &__selector {
     ul {
-      display: flex;
-      justify-content: space-evenly;
-
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
       li {
-        padding: 2px 20px;
+        width: 90%;
         background-color: #f3f3f3;
         border-radius: 5px;
-
         cursor: default;
         font-weight: 600;
         font-size: 14px;
+        padding: 2px 0;
       }
     }
   }

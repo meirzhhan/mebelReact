@@ -5,7 +5,7 @@ const initialState: IFilterSliceState = {
   categoryId: 0,
   sortByType: {
     name: 'рейтингу',
-    property: 'price',
+    property: 'rating',
   },
 };
 

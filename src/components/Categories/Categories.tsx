@@ -1,8 +1,7 @@
 import cl from './Categories.module.scss';
-import { useState } from 'react';
 
 type TCategoriesProps = {
-  value: number;
+  value: number | string;
   onChangeCategory: (i: number) => void;
 };
 

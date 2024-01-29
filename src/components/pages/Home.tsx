@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Categories from '../Categories/Categories';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { fetchMebel } from '../redux/mebel/asyncActions';
 import { useAppDispatch } from '../redux/store';
 import MebelBlock from '../MebelBlock/MebelBlock';
@@ -18,7 +18,8 @@ const Home = () => {
 
   // При изменении категории
   const onChangeCategory = useCallback((id: number) => {
-    dispatch(setCategoryId(id));
+    categoryId === id ? dispatch(setCategoryId(0)) : dispatch(setCategoryId(id));
+    // dispatch(setCategoryId(id));
   }, []);
 
   // Запрос на мокапи для получении данных

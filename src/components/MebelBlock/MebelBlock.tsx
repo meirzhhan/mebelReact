@@ -36,7 +36,7 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
         <div className="mebel-block__selector">
           <ul>
             {sizes.map((size, i) => (
-              <li key={i}>{size} см.</li>
+              <li key={i}>{size} см</li>
             ))}
           </ul>
         </div>
