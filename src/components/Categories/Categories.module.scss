@@ -1,15 +1,14 @@
 @import '../../scss/variables';
 
 .category {
-  @include container;
-  padding: 15px 0;
+  margin: 20px 0;
   ul {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     li {
-      margin: 0 15px;
       background-color: $creme;
       border-radius: 10px;
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.4);
 
       div {
         cursor: pointer;
@@ -19,7 +18,7 @@
         border-radius: 10px;
 
         img {
-          width: 165px;
+          width: 150px;
         }
         @media (max-width: 1300px) {
           img {
@@ -64,7 +63,6 @@
       li {
         .category__image {
           width: 60px;
-          // display: none;
         }
         div {
           padding: 5px;

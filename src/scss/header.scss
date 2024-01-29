@@ -1,6 +1,9 @@
 @import './variables';
 
 .header {
+  // position: fixed;
+  // width: 100%;
+  // top: 0;
   border-bottom: 1px solid #000000;
   padding: 12px 0;
   background-color: $brown;
@@ -32,7 +35,7 @@
     }
 
     p {
-      color: $whiteAs;
+      color: $creme;
     }
   }
 

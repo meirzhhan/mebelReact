@@ -1,0 +1,70 @@
+@import '../../scss/variables';
+
+.sort {
+  position: relative;
+  &__label {
+    display: flex;
+    align-items: center;
+
+    b {
+      margin-right: 8px;
+    }
+    span {
+      color: $brown;
+      border-bottom: 1px dashed $brown;
+      cursor: pointer;
+      margin-right: 15px;
+      font-weight: 700;
+    }
+
+    button {
+      text-align: center;
+      padding: 2px 8px;
+      border: 1px solid $brown;
+      border-radius: 10px;
+      margin-right: 5px;
+      cursor: pointer;
+      background-color: $white;
+      color: $brown;
+      transition: all ease-in-out 0.1s;
+      &:hover {
+        background-color: $brown;
+        color: $white;
+      }
+    }
+
+    .activeButton {
+      background-color: $brown;
+      color: white;
+    }
+  }
+  &__popup {
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    margin-top: 15px;
+    background: #ffffff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 0;
+
+    ul {
+      overflow: hidden;
+      li {
+        padding: 12px 20px;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba(55, 39, 35, 0.06);
+        }
+
+        &.active {
+          font-weight: bold;
+          color: $brown;
+          background: rgba(55, 39, 35, 0.06);
+        }
+      }
+    }
+  }
+}

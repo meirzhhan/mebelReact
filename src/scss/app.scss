@@ -1,5 +1,7 @@
-@import './header';
 @import './variables';
+@import './header';
+@import './mebelBlock';
+
 * {
   text-decoration: none;
   margin: 0;
@@ -8,21 +10,33 @@
   font-family: 'Nunito', sans-serif;
   list-style: none;
 }
+
+.container {
+  @include container;
+}
+
+.wrapper {
+  background-color: black;
+}
+.content__middle {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  &-title {
+    font-size: 36px;
+    font-weight: bold;
+  }
+}
+
+.content__items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 50px;
+  margin-bottom: 100px;
+}
+
 .active {
-  // margin: 150px;
   background: #c4c2c0;
 
   font-weight: 800;
 }
-
-// body {
-//   background-color: red;
-// }
-// .App {
-//   text-align: center;
-// }
-
-// .App-logo {
-//   height: 40vmin;
-//   pointer-events: none;
-// }

@@ -1,7 +1,12 @@
 import cl from './Categories.module.scss';
 import { useState } from 'react';
 
-const Categories: React.FC = () => {
+type TCategoriesProps = {
+  value: number;
+  onChangeCategory: (i: number) => void;
+};
+
+const Categories: React.FC<TCategoriesProps> = ({ value, onChangeCategory }) => {
   const categories: { type: string; img: string }[] = [
     {
       type: 'Диваны',
@@ -29,22 +34,14 @@ const Categories: React.FC = () => {
     },
   ];
 
-  const [value, setValue] = useState(0);
-
-  const onChangeCategory = (i: number) => {
-    setValue(i);
-    console.log(i);
-  };
-
   return (
     <div className={cl.category}>
       <ul>
         {categories.map((categoryName, i) => (
-          <li>
+          <li key={i}>
             <div
-              key={i}
-              onClick={() => onChangeCategory(i)}
-              className={value === i ? 'active' : ''}>
+              onClick={() => onChangeCategory(i + 1)}
+              className={value === i + 1 ? 'active' : ''}>
               <img className={cl.category__image} src={categoryName.img} alt="" />
               <p>{categoryName.type}</p>
             </div>
