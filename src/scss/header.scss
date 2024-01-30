@@ -1,13 +1,14 @@
 @import './variables';
 
 .header {
-  // position: fixed;
-  // width: 100%;
-  // top: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
   border-bottom: 1px solid #000000;
-  padding: 12px 0;
+  padding: 8px 0;
   background-color: $brown;
-  color: $white;
+  margin-bottom: 25px;
   .container {
     @include container;
     display: flex;
@@ -29,9 +30,9 @@
 
     h1 {
       font-size: 24px;
-      letter-spacing: 1%;
-      text-transform: uppercase;
+      // text-transform: uppercase;
       font-weight: 800;
+      color: $white;
     }
 
     p {

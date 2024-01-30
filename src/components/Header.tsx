@@ -1,23 +1,23 @@
-import logoSvg from '../assets/mebel.png';
-
 import { Link, useLocation } from 'react-router-dom';
-import HeaderSearch from './HeaderSearch/HeaderSearch';
+import logoSvg from '../assets/mebel.png';
+import Search from './HeaderSearch/Search';
 
 const Header = () => {
   // const location = useLocation();
-
   return (
     <div className="header">
       <div className="container">
-        <div className="header__logo">
-          <img width="38" src={logoSvg} alt="Mebel logo" />
-          <div className="header__logo-h1">
-            <h1>е-мебель</h1>
+        <Link to="/">
+          <div className="header__logo">
+            <img width="38" src={logoSvg} alt="Mebel logo" />
+            <div className="header__logo-h1">
+              <h1>Е-Мебель</h1>
+            </div>
           </div>
-        </div>
-        <HeaderSearch />
+        </Link>
+        <Search />
         {/* {location.pathname !== '/cart' && ( */}
-        <a href="/cart" className="header__button">
+        <Link to="/cart" className="header__button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path
               d="M24,23a3,3,0,1,0,3,3A3.0033,3.0033,0,0,0,24,23Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,24,27Z"
@@ -31,7 +31,7 @@ const Header = () => {
           </svg>
           <div></div>
           <span>5</span>
-        </a>
+        </Link>
         {/* )} */}
       </div>
     </div>

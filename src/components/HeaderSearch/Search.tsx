@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
-import cl from './HeaderSearch.module.scss';
+import cl from './Search.module.scss';
 
 import { ChangeEvent, useEffect, useState } from 'react';
 import { setSearchValue } from '../redux/filter/slice';
 // import { setCategoryId } from '../redux/filter/slice';
 
-const HeaderSearch = () => {
+const Search = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState<string>(''); //  для хранения значения поискового поля локально
 
@@ -26,7 +26,13 @@ const HeaderSearch = () => {
 
   return (
     <div className={cl.container}>
-      <input className={cl.input} placeholder="Поиск..." value={value} onChange={onChangeInput} />
+      <input
+        name="inputSearch"
+        className={cl.input}
+        placeholder="Поиск..."
+        value={value}
+        onChange={onChangeInput}
+      />
       {value && (
         <svg
           onClick={onClickClear}
@@ -40,4 +46,4 @@ const HeaderSearch = () => {
   );
 };
 
-export default HeaderSearch;
+export default Search;

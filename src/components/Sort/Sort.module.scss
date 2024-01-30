@@ -10,8 +10,8 @@
       margin-right: 8px;
     }
     span {
-      color: $brown;
-      border-bottom: 1px dashed $brown;
+      color: white;
+      border-bottom: 1px dashed white;
       cursor: pointer;
       margin-right: 8px;
       font-weight: 700;
@@ -20,22 +20,22 @@
     button {
       text-align: center;
       padding: 2px 8px;
-      border: 1px solid $brown;
+      border: 1px solid white;
       border-radius: 10px;
       margin-right: 5px;
       cursor: pointer;
-      background-color: $white;
-      color: $brown;
+      background-color: $brown;
+      color: $white;
       transition: all ease-in-out 0.1s;
       &:hover {
-        background-color: $brown;
-        color: $white;
+        background-color: $white;
+        color: $brown;
       }
     }
 
     .activeButton {
-      background-color: $brown;
-      color: white;
+      background-color: $white;
+      color: $brown;
     }
   }
   &__popup {
@@ -54,6 +54,7 @@
       li {
         padding: 12px 20px;
         cursor: pointer;
+        color: $brown;
 
         &:hover {
           background: rgba(55, 39, 35, 0.06);

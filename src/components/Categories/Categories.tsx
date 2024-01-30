@@ -39,6 +39,7 @@ const Categories: React.FC<TCategoriesProps> = ({ value, onChangeCategory }) => 
 
   return (
     <div className={cl.category}>
+      <h2 className={cl.category__title}>Категории</h2>
       <ul>
         {categories.map((category, i) => (
           <li key={i}>
