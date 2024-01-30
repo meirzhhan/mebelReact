@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFilterState } from '../redux/filter/selectors';
 
 import cl from './Sort.module.scss';
-import { setSortByType } from '../redux/filter/slice';
+import { setSortByOrder, setSortByType } from '../redux/filter/slice';
 import { TSort } from '../redux/filter/types';
 
 const sortList = [
@@ -15,7 +15,7 @@ const sortList = [
 const Sort: React.FC = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState<boolean>(false); //  открыто ли меню сортировки или нет
-  const { sortByType } = useSelector(selectFilterState); //  получение типа сортировки из редаксТК
+  const { sortByType, sortByOrder } = useSelector(selectFilterState); //  получение типа сортировки из редаксТК
 
   //   функция для выбора типа сортировки. Передает тип сортировки в редакс и закрывает окно
   const onClickListItem = (obj: TSort) => {
@@ -30,15 +30,13 @@ const Sort: React.FC = () => {
         <b>Сортировка по:</b>
         <span onClick={() => setOpen(!open)}>{sortByType.name}</span>
         <button
-        // onClick={() => dispatch(setSortByOrder('asc'))}
-        // className={valueOrder === 'asc' ? 'activeButton' : ''}
-        >
+          onClick={() => dispatch(setSortByOrder('asc'))}
+          className={sortByOrder === 'asc' ? `${cl.activeButton}` : ''}>
           ↑
         </button>
         <button
-        // onClick={() => dispatch(setSortByOrder('desc'))}
-        // className={valueOrder === 'desc' ? 'activeButton' : ''}
-        >
+          onClick={() => dispatch(setSortByOrder('desc'))}
+          className={sortByOrder === 'desc' ? `${cl.activeButton}` : ''}>
           ↓
         </button>
       </div>

@@ -14,7 +14,7 @@ const Home = () => {
   const isSearch = useRef(false);
 
   const { items, status } = useSelector(selectMebelState);
-  const { categoryId, sortByType } = useSelector(selectFilterState);
+  const { categoryId, sortByType, sortByOrder } = useSelector(selectFilterState);
 
   // При изменении категории
   const onChangeCategory = useCallback((id: number) => {
@@ -25,12 +25,14 @@ const Home = () => {
   // Запрос на мокапи для получении данных
   const getMebel = async () => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
-    const property = `sortBy=${sortByType.property}`;
+    const property = `&sortBy=${sortByType.property}`;
+    const order = `&order=${sortByOrder}`;
 
     dispatch(
       fetchMebel({
         category,
         property,
+        order,
       }),
     );
   };
@@ -40,7 +42,7 @@ const Home = () => {
     if (!isSearch.current) {
       getMebel();
     }
-  }, [categoryId, sortByType]);
+  }, [categoryId, sortByType, sortByOrder]);
 
   return (
     <div className="container">

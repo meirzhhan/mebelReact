@@ -33,12 +33,17 @@
       font-size: 24px;
     }
   }
+  @media (max-width: 530px) {
+    &-title {
+      font-size: 20px;
+    }
+  }
 }
 
 .content__items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  row-gap: 50px;
+  gap: 60px 20px;
   margin-bottom: 100px;
 
   @media (max-width: 1350px) {

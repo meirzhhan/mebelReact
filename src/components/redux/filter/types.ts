@@ -6,4 +6,5 @@ export type TSort = {
 export interface IFilterSliceState {
   categoryId: number;
   sortByType: TSort;
+  sortByOrder: string;
 }

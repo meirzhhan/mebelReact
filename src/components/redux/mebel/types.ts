@@ -11,9 +11,9 @@ export type TMebel = {
 export type TSearchMebelParams = {
   property: string;
   category: string;
+  order: string;
   // search: string;
   // currentPage: string;
-  // sortByOrder: string;
 };
 
 //

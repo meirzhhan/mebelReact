@@ -7,6 +7,7 @@ const initialState: IFilterSliceState = {
     name: 'рейтингу',
     property: 'rating',
   },
+  sortByOrder: 'asc',
 };
 
 const filterSlice = createSlice({
@@ -19,8 +20,11 @@ const filterSlice = createSlice({
     setSortByType: (state, action: PayloadAction<TSort>) => {
       state.sortByType = action.payload;
     },
+    setSortByOrder: (state, action: PayloadAction<string>) => {
+      state.sortByOrder = action.payload;
+    },
   },
 });
 
-export const { setCategoryId, setSortByType } = filterSlice.actions;
+export const { setCategoryId, setSortByType, setSortByOrder } = filterSlice.actions;
 export default filterSlice.reducer;

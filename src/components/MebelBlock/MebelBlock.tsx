@@ -42,7 +42,7 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
         </div>
 
         <div className="mebel-block__bottom">
-          <div className="mebel-block__price">от {price} ₸</div>
+          <div className="mebel-block__price"> {price} ₸</div>
           {/* <button  onClick={onClickAdd}  className="button button--outline button--add"> */}
           <button className="mebel-block__button">
             <svg
@@ -56,7 +56,7 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
                 fill="white"
               />
             </svg>
-            <span>Добавить</span>
+            <span className="mebel-block__span">Добавить</span>
             {addedCount > 0 && <i>{addedCount}</i>}
           </button>
         </div>
