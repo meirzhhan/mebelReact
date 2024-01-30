@@ -8,6 +8,10 @@ type TCategoriesProps = {
 const Categories: React.FC<TCategoriesProps> = ({ value, onChangeCategory }) => {
   const categories: { type: string; img: string }[] = [
     {
+      type: 'Поплуярные',
+      img: 'https://cdn0.divan.by/img/v1/og0-bsHujVkewpsbeLd6MQsLV4JGVbMRvdVhewjbiL4/rs:fit:1920:1440:0:0/g:ce:0:0/q:85/czM6Ly9kaXZhbi9jYXRlZ29yeS1wb3B1bGFyLzQ4NTg5NzUucG5n.png',
+    },
+    {
       type: 'Диваны',
       img: 'https://cdn0.divan.by/img/v1/UoBzK2Lv7CuxFMbnV0xDaniSbPfti79xy4-OTyFHRJw/rs:fit:1920:1440:0:0/g:ce:0:0/q:85/czM6Ly9kaXZhbi9jYXRlZ29yeS1wb3B1bGFyLzQ3ODM3OTYucG5n.png',
     },
@@ -20,11 +24,11 @@ const Categories: React.FC<TCategoriesProps> = ({ value, onChangeCategory }) => 
       img: 'https://cdn0.divan.by/img/v1/cPw1Zph084bvrPrPUFgC1bTNrxbC53_zMqmpteAVPZY/rs:fit:1920:1440:0:0/g:ce:0:0/q:85/czM6Ly9kaXZhbi9jYXRlZ29yeS1wb3B1bGFyLzQ3ODM3OTgucG5n.png',
     },
     {
-      type: 'комоды',
+      type: 'Комоды',
       img: 'https://cdn0.divan.by/img/v1/dmYRR0U4_KT73ZnnvVezcKv6-a3nuLK04xWaYK21MK0/rs:fit:1920:1440:0:0/g:ce:0:0/q:85/czM6Ly9kaXZhbi9jYXRlZ29yeS1wb3B1bGFyLzQ3ODM4MDAucG5n.png',
     },
     {
-      type: 'столы',
+      type: 'Столы',
       img: 'https://cdn0.divan.by/img/v1/5rAQd4UB1hiHb3YquRWm83n4e4KEuM0o2JiU_s_0rjU/rs:fit:1920:1440:0:0/g:ce:0:0/q:85/czM6Ly9kaXZhbi9jYXRlZ29yeS1wb3B1bGFyLzQ3ODM4MDIucG5n.png',
     },
     {
@@ -36,13 +40,11 @@ const Categories: React.FC<TCategoriesProps> = ({ value, onChangeCategory }) => 
   return (
     <div className={cl.category}>
       <ul>
-        {categories.map((categoryName, i) => (
+        {categories.map((category, i) => (
           <li key={i}>
-            <div
-              onClick={() => onChangeCategory(i + 1)}
-              className={value === i + 1 ? 'active' : ''}>
-              <img className={cl.category__image} src={categoryName.img} alt="" />
-              <p>{categoryName.type}</p>
+            <div onClick={() => onChangeCategory(i)} className={value === i ? 'active' : ''}>
+              <img className={cl.category__image} src={category.img} alt="" />
+              <p>{category.type}</p>
             </div>
           </li>
         ))}

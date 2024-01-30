@@ -1,9 +1,13 @@
+import { useDispatch } from 'react-redux';
 import cl from './HeaderSearch.module.scss';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { setSearchValue } from '../redux/filter/slice';
+// import { setCategoryId } from '../redux/filter/slice';
 
 const HeaderSearch = () => {
-  const [value, setValue] = useState<string>('');
+  const dispatch = useDispatch();
+  const [value, setValue] = useState<string>(''); //  для хранения значения поискового поля локально
 
   const onClickClear = () => {
     setValue('');
@@ -11,6 +15,14 @@ const HeaderSearch = () => {
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
+
+  // debounce
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      dispatch(setSearchValue(value));
+    }, 500);
+    return () => clearTimeout(timeoutId);
+  }, [value, 500]);
 
   return (
     <div className={cl.container}>

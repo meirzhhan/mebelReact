@@ -1,7 +1,4 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { TMebel } from '../redux/mebel/types';
-import { title } from 'process';
 // import '../../scss/_mebelBlock.scss';
 
 const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => {

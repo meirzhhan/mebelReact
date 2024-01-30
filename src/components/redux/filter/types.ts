@@ -7,4 +7,5 @@ export interface IFilterSliceState {
   categoryId: number;
   sortByType: TSort;
   sortByOrder: string;
+  searchValue: string;
 }

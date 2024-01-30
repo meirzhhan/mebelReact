@@ -8,6 +8,7 @@ const initialState: IFilterSliceState = {
     property: 'rating',
   },
   sortByOrder: 'asc',
+  searchValue: '',
 };
 
 const filterSlice = createSlice({
@@ -23,8 +24,11 @@ const filterSlice = createSlice({
     setSortByOrder: (state, action: PayloadAction<string>) => {
       state.sortByOrder = action.payload;
     },
+    setSearchValue: (state, action: PayloadAction<string>) => {
+      state.searchValue = action.payload;
+    },
   },
 });
 
-export const { setCategoryId, setSortByType, setSortByOrder } = filterSlice.actions;
+export const { setCategoryId, setSortByType, setSortByOrder, setSearchValue } = filterSlice.actions;
 export default filterSlice.reducer;

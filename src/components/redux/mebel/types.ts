@@ -12,7 +12,7 @@ export type TSearchMebelParams = {
   property: string;
   category: string;
   order: string;
-  // search: string;
+  search: string;
   // currentPage: string;
 };
 
