@@ -1,23 +1,26 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { TMebel } from '../redux/mebel/types';
-// import '../../scss/_mebelBlock.scss';
+import { addItem } from '../redux/cart/slice';
+import { TCartItems } from '../redux/cart/types';
+import { selectCartItemById } from '../redux/cart/selectors';
 
 const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => {
-  // const addedCount = cartItm ? cartItm.count : 0;
-  const addedCount = 1;
+  const cartItm = useSelector(selectCartItemById(id));
 
-  // const [mebel, setMebel] = useState<{
-  //   imageUrl: string;
-  //   title: string;
-  //   price: number;
-  // }>();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const mebelUrl = 'https://run.mocky.io/v3/cdb7289a-5cd2-440a-b877-10c82c20adfb';
-  //   axios.get(mebelUrl).then((resp) => {
-  //     const allMebel = resp.data;
-  //     setMebel(allMebel);
-  //   });
-  // }, []);
+  const count = 5;
+  const onClickAdd = () => {
+    const item: TCartItems = {
+      id,
+      imageUrl,
+      title,
+      price,
+      sizes,
+      count,
+    };
+    !cartItm && dispatch(addItem(item));
+  };
 
   return (
     <div className="mebel-block-wrapper">
@@ -41,7 +44,7 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
         <div className="mebel-block__bottom">
           <div className="mebel-block__price"> {price} ₸</div>
           {/* <button  onClick={onClickAdd}  className="button button--outline button--add"> */}
-          <button className="mebel-block__button">
+          <button onClick={onClickAdd} className="mebel-block__button">
             <svg
               width="12"
               height="12"
@@ -53,8 +56,7 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
                 fill="white"
               />
             </svg>
-            <span className="mebel-block__span">Добавить</span>
-            {addedCount > 0 && <i>{addedCount}</i>}
+            <span className="mebel-block__span">{cartItm ? 'В корзине' : 'Добавить'}</span>
           </button>
         </div>
       </div>

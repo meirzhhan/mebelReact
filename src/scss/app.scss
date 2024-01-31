@@ -1,7 +1,7 @@
 @import './variables';
 @import './header';
 @import './mebelBlock';
-
+@import './cart';
 * {
   text-decoration: none;
   margin: 0;
@@ -13,6 +13,7 @@
 
 .container {
   @include container;
+  margin-top: 85px;
 }
 .content__top {
   margin-top: 30px;
@@ -62,7 +63,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
   column-gap: 30px;
-  margin-top: 85px;
+  // margin-top: 85px;
 
   &-wrapper {
     max-height: 315px;
