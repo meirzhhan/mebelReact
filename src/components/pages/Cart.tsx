@@ -1,26 +1,25 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { selectCartState } from '../redux/cart/selectors';
-import { addItem, minusItem, removeItem } from '../redux/cart/slice';
-import { TCartItems } from '../redux/cart/types';
 import CartItem from '../CartItem/CartItem';
+import CartTotal from '../CartItem/CartTotal';
 
 const Cart = () => {
-  const { items } = useSelector(selectCartState);
+  const { items, totalPrice } = useSelector(selectCartState);
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
+  if (!totalCount) {
+    return <div></div>;
+  }
 
   return (
     <div className="cart">
       <div className="cart__container">
-        <div className="cart__content">
-          <div>
-            {items.map((item, index) => (
-              <CartItem key={item.id} {...item} />
-            ))}
-          </div>
-
-          <div>Итого {totalCount} товаров на сумму</div>
+        <div className="cart__div">
+          {items.map((item) => (
+            <CartItem key={item.id} {...item} />
+          ))}
         </div>
+        <CartTotal totalCount={totalCount} totalPrice={totalPrice} />
       </div>
     </div>
   );

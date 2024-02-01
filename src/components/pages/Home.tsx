@@ -18,13 +18,12 @@ const Home = () => {
   const { items, status } = useSelector(selectMebelState);
   const { categoryId, sortByType, sortByOrder, searchValue } = useSelector(selectFilterState);
 
-  // При изменении категории
+  //
   const onChangeCategory = useCallback(
     (id: number) => {
-      // categoryId === id ? dispatch(setCategoryId(0)) : dispatch(setCategoryId(id));
       dispatch(setCategoryId(id));
     },
-    [categoryId],
+    [dispatch],
   );
 
   // Запрос на мокапи для получении данных
@@ -55,13 +54,7 @@ const Home = () => {
   return (
     <div className="container">
       <Gallery />
-
-      <div className="content__top">
-        <Categories value={categoryId} onChangeCategory={onChangeCategory} />
-        {/* <Categories value={categoryId} onChangeCategory={onChangeCategory} /> */}
-        {/* <Sort valueType={sortByType} valueOrder={sortByOrder} /> */}
-      </div>
-
+      <Categories value={categoryId} onChangeCategory={onChangeCategory} />
       <div className="content__middle">
         <h2 className="content__middle-title">Весь асортимент</h2>
         <Sort />
@@ -76,8 +69,6 @@ const Home = () => {
             : items.map((items) => <MebelBlock key={items.id} {...items} />)}
         </div>
       )}
-
-      <div className="content__items"></div>
     </div>
   );
 };

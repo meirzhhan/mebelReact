@@ -1,5 +1,5 @@
 .container {
-  // order: 3;
+  order: 2;
   position: relative;
   display: flex;
   align-items: center;
@@ -25,6 +25,16 @@
 
     &:hover {
       opacity: 0.8;
+    }
+  }
+}
+
+@media (max-width: 385px) {
+  .container .input {
+    padding: 5px 10px;
+    font-size: 14px;
+    .clearIcon {
+      height: 14px;
     }
   }
 }

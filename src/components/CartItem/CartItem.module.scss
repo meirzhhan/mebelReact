@@ -13,7 +13,7 @@
 
 .div {
   display: grid;
-  grid-template-columns: 1fr 2.2fr;
+  grid-template-columns: 1fr 2fr;
   background-color: white;
   padding: 40px;
   margin-bottom: 40px;
@@ -78,6 +78,89 @@
       :hover {
         color: $brown;
       }
+    }
+  }
+}
+
+//total
+
+.total {
+  margin: 0 auto;
+  // height: 100%;
+  padding: 30px;
+  position: sticky;
+  width: 250px;
+  height: 350px;
+  top: 50px;
+
+  &__main {
+    border-top: 1px solid #c4c4c4;
+    margin-top: 30px;
+    padding: 20px 0;
+    p {
+      margin-bottom: 10px;
+      color: #c4c4c4;
+      font-size: 14px;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+
+      &__discount {
+        font-size: 32px;
+        color: $brown;
+      }
+      &__price {
+        font-size: 22px;
+        color: #c4c4c4;
+        margin-top: 5px;
+        text-decoration: line-through;
+      }
+    }
+  }
+}
+@media (max-width: 850px) {
+  .total {
+    padding: 10px;
+    width: 160px;
+  }
+}
+@media (max-width: 770px) {
+  .total {
+    position: initial;
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+    &__main {
+      margin-top: 5px;
+      padding: 5px 0;
+      p {
+        margin-bottom: 0px;
+      }
+      &__info__price {
+        margin-top: 0px;
+      }
+    }
+  }
+}
+@media (max-width: 550px) {
+  .div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 90%;
+    margin: 0 auto 30px auto;
+  }
+  .image {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .info {
+    margin: 10px auto 0px auto;
+    &__top__button {
+      margin-left: 15px;
     }
   }
 }

@@ -9,6 +9,8 @@
   padding: 8px 0;
   background-color: $brown;
   margin-bottom: 25px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+
   .container {
     @include container;
     display: flex;
@@ -21,6 +23,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    order: 1;
 
     img {
       margin-right: 15px;
@@ -30,7 +33,6 @@
 
     h1 {
       font-size: 24px;
-      // text-transform: uppercase;
       font-weight: 800;
       color: $white;
     }
@@ -41,10 +43,10 @@
   }
 
   &__button {
-    color: $brown;
     display: flex;
     align-items: center;
     color: #fff;
+    order: 3;
 
     svg {
       height: 24px;
@@ -77,14 +79,27 @@
     }
 
     .header__logo {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       padding: 0 5px;
-      order: -1;
+      order: 1;
+      img {
+        width: 30px;
+        margin-right: 10px;
+      }
+      h1 {
+        font-size: 20px;
+      }
     }
     .header__button {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       padding: 0 5px;
-      order: -1;
+      order: 1;
+      div {
+        margin: 0 5px;
+      }
+      span {
+        font-size: 14px;
+      }
     }
   }
 }

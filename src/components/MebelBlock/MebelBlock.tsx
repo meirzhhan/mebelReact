@@ -43,7 +43,7 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
         </div>
 
         <div className="mebel-block__bottom">
-          <div className="mebel-block__price"> {price} ₸</div>
+          <div className="mebel-block__price"> {price.toLocaleString()} ₸</div>
           {/* <button  onClick={onClickAdd}  className="button button--outline button--add"> */}
           <button onClick={onClickAdd} className="mebel-block__button">
             <svg
