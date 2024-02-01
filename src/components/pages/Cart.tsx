@@ -1,42 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectCartState } from '../redux/cart/selectors';
+import { addItem, minusItem, removeItem } from '../redux/cart/slice';
+import { TCartItems } from '../redux/cart/types';
+import CartItem from '../CartItem/CartItem';
 
 const Cart = () => {
   const { items } = useSelector(selectCartState);
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
   return (
     <div className="cart">
       <div className="cart__container">
         <div className="cart__content">
-          <div className="cart__item">
+          <div>
             {items.map((item, index) => (
-              <>
-                <img className="cart__item-img" src={item.imageUrl} alt="" />
-                <div className="cart__item-info">
-                  <div className="cart__item__top">
-                    <Link to="/cart" className="cart__item-title">
-                      {item.title}
-                    </Link>
-                    <button>Удалить</button>
-                  </div>
-
-                  <div className="cart__item__middle">
-                    <span>Размеры: {item.sizes.map((i) => `${i}см * `)}</span>
-
-                    <span>Цвет: {}</span>
-                    <div>
-                      <button>-</button>
-                      <span>1</span>
-                      <button>+</button>
-                    </div>
-                  </div>
-                </div>
-              </>
+              <CartItem key={item.id} {...item} />
             ))}
           </div>
 
-          <div>price</div>
+          <div>Итого {totalCount} товаров на сумму</div>
         </div>
       </div>
     </div>

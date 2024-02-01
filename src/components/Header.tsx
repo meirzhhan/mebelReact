@@ -1,8 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import logoSvg from '../assets/mebel.png';
 import Search from './HeaderSearch/Search';
+import { useSelector } from 'react-redux';
+import { selectCartState } from './redux/cart/selectors';
 
 const Header = () => {
+  const { items, totalPrice } = useSelector(selectCartState);
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
   // const location = useLocation();
   return (
     <div className="header">
@@ -30,7 +34,7 @@ const Header = () => {
               fill="#fff"></path>
           </svg>
           <div></div>
-          <span>5</span>
+          <span>{totalCount}</span>
         </Link>
         {/* )} */}
       </div>

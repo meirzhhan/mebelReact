@@ -10,6 +10,7 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
   const dispatch = useDispatch();
 
   const count = 5;
+
   const onClickAdd = () => {
     const item: TCartItems = {
       id,

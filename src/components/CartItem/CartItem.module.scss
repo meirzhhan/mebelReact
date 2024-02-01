@@ -1,0 +1,83 @@
+@import '../../scss/variables';
+
+@mixin reset {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  color: #c4c4c4;
+}
+
+.div {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr;
+  background-color: white;
+  padding: 40px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+}
+.image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.info {
+  margin-left: 30px;
+  color: $brown;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    &__title {
+      color: $brown;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+    &__button {
+      @include reset;
+      font-size: 16px;
+    }
+  }
+
+  &__middle {
+    display: flex;
+    flex-direction: column;
+    &__span {
+      margin-top: 5px;
+      font-size: 16px;
+    }
+
+    &__button {
+      margin-top: 10px;
+      background-color: white;
+      border: 1px solid #c4c4c4;
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      &:hover {
+        border-color: $brown;
+      }
+
+      span {
+        width: 30px;
+        text-align: center;
+        cursor: default;
+      }
+      button {
+        @include reset;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 0 5px;
+        transition: ease-in-out 0.2s;
+      }
+      :hover {
+        color: $brown;
+      }
+    }
+  }
+}
