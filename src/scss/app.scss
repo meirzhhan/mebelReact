@@ -13,15 +13,18 @@
 .container {
   @include container;
   margin-top: 85px;
+  @media (max-width: 385px) {
+    margin-top: 120px;
+  }
 }
 
 .content__middle {
-  margin: 30px 0 30px 0;
+  margin: 30px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: $brown;
-  color: white;
+  color: #fff;
   padding: 10px;
   border-radius: 10px;
   &-title {
@@ -125,13 +128,9 @@
       flex-wrap: wrap-reverse;
     }
   }
-  // @media
 }
-//
+
 @media (max-width: 385px) {
-  .container {
-    margin-top: 120px;
-  }
   .cart {
     padding-top: 80px;
   }

@@ -10,13 +10,16 @@
   background-color: $brown;
   margin-bottom: 25px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-
   .container {
     @include container;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 12px;
+    @media (max-width: 385px) {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
   }
 
   &__logo {
@@ -24,19 +27,19 @@
     align-items: center;
     cursor: pointer;
     order: 1;
-
     img {
       margin-right: 15px;
       background-color: #fff;
       border-radius: 10px;
     }
-
     h1 {
       font-size: 24px;
       font-weight: 800;
       color: #fff;
+      @media (max-width: 550px) {
+        display: none;
+      }
     }
-
     p {
       color: $creme;
     }
@@ -47,7 +50,6 @@
     align-items: center;
     color: #fff;
     order: 3;
-
     svg {
       height: 24px;
     }
@@ -57,49 +59,31 @@
       background-color: #fff;
       margin: 0 8px;
     }
-
     span {
       font-weight: 600;
       font-size: 16px;
     }
   }
-  @media (max-width: 550px) {
-    .header__logo-h1 {
-      display: none;
-    }
-  }
-  @media (max-width: 385px) {
-    .container {
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .header__logo-h1 {
-      display: block;
-      font-size: smaller;
-    }
 
-    .header__logo {
-      margin-bottom: 5px;
-      padding: 0 5px;
-      order: 1;
-      img {
-        width: 30px;
-        margin-right: 10px;
-      }
-      h1 {
-        font-size: 20px;
-      }
-    }
+  @media (max-width: 385px) {
+    .header__logo,
     .header__button {
       margin-bottom: 5px;
       padding: 0 5px;
       order: 1;
-      div {
-        margin: 0 5px;
-      }
-      span {
-        font-size: 14px;
-      }
+    }
+    .header__logo img {
+      width: 30px;
+      margin-right: 10px;
+    }
+    .header__logo h1 {
+      font-size: 20px;
+    }
+    .header__button div {
+      margin: 0 5px;
+    }
+    .header__button span {
+      font-size: 14px;
     }
   }
 }

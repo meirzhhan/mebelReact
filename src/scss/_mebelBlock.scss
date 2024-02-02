@@ -4,11 +4,6 @@
   text-align: center;
   max-width: 100%;
 
-  &-wrapper {
-    // display: flex;
-    // justify-content: center;
-  }
-
   &__image {
     display: block;
     width: 100%;
@@ -34,12 +29,9 @@
     letter-spacing: 1%;
     margin: 15px 0;
 
-    // white-space: nowrap;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
-  }
-  &__title:hover {
-    font-weight: 800;
+    &:hover {
+      font-weight: 800;
+    }
   }
 
   &__selector {
@@ -47,6 +39,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       justify-items: center;
+
       li {
         width: 90%;
         background-color: #f3f3f3;
@@ -65,6 +58,7 @@
     justify-content: space-between;
     margin-top: 20px;
   }
+
   &__button {
     background-color: #4b3c38;
     color: #fff;
@@ -75,13 +69,9 @@
     display: flex;
     align-items: center;
 
-    svg {
-      margin-right: 5px;
-    }
+    svg,
     span {
       margin-right: 5px;
-      font-weight: 600;
-      font-size: 14px;
     }
 
     i {
@@ -94,12 +84,13 @@
       height: 22px;
       font-size: 13px;
       line-height: 22px;
-
       display: flex;
       justify-content: center;
     }
+
     &:hover {
       background-color: $brown;
+
       i {
         background-color: white;
       }
@@ -113,6 +104,7 @@
     letter-spacing: 0.015em;
     color: $red;
   }
+
   @media (max-width: 950px) {
     &__button {
       padding: 8px 16px;
@@ -120,6 +112,7 @@
         font-size: 12px;
       }
     }
+
     &__price {
       font-size: 20px;
     }
@@ -130,24 +123,30 @@
       font-size: 14px;
       margin: 8px 0;
     }
+
     &__selector ul li {
       font-size: 10px;
     }
+
     &__button {
       padding: 4px 8px;
+
       i {
         width: 16px;
         height: 16px;
         font-size: 10px;
         line-height: 17px;
       }
+
       span {
         font-size: 10px;
       }
     }
+
     &__price {
       font-size: 12px;
     }
+
     &__bottom {
       margin-top: 10px;
     }
