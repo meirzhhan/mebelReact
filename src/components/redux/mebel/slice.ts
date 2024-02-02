@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IMebelSliceState, Status, TMebel } from './types';
-import { fetchMebel } from './asyncActions';
+import { fetchMebels } from './asyncActions';
 
 const initialState: IMebelSliceState = {
   items: [],
@@ -17,15 +17,15 @@ const mebelSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchMebel.pending, (state) => {
+      .addCase(fetchMebels.pending, (state) => {
         state.status = Status.LOADING;
         state.items = [];
       })
-      .addCase(fetchMebel.fulfilled, (state, action) => {
+      .addCase(fetchMebels.fulfilled, (state, action) => {
         state.status = Status.SUCCESS;
         state.items = action.payload;
       })
-      .addCase(fetchMebel.rejected, (state) => {
+      .addCase(fetchMebels.rejected, (state) => {
         state.status = Status.ERROR;
         state.items = [];
       });

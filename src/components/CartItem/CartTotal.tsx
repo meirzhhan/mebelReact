@@ -5,7 +5,7 @@ type TTotal = {
 };
 
 const CartTotal: React.FC<TTotal> = ({ totalCount, totalPrice }) => {
-  const discount = totalPrice - Math.floor(totalPrice * 0.9);
+  const discount = totalPrice - Math.floor(totalPrice * 0.8);
   return (
     <div className={cl.total}>
       <span>Скидка: {discount.toLocaleString()} ₸</span>

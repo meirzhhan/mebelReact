@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 import Categories from '../Categories/Categories';
 import { useSelector } from 'react-redux';
-import { fetchMebel } from '../redux/mebel/asyncActions';
+import { fetchMebels } from '../redux/mebel/asyncActions';
 import { useAppDispatch } from '../redux/store';
 import MebelBlock from '../MebelBlock/MebelBlock';
 import { selectMebelState } from '../redux/mebel/selectors';
@@ -34,7 +34,7 @@ const Home = () => {
     const search = `&title=${searchValue}`;
 
     dispatch(
-      fetchMebel({
+      fetchMebels({
         category,
         property,
         order,

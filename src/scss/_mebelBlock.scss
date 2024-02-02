@@ -67,7 +67,7 @@
   }
   &__button {
     background-color: #4b3c38;
-    color: $white;
+    color: #fff;
     border-radius: 10px;
     border: none;
     padding: 10px 20px;
@@ -111,7 +111,7 @@
     font-size: 22px;
     line-height: 27px;
     letter-spacing: 0.015em;
-    color: #d70404;
+    color: $red;
   }
   @media (max-width: 950px) {
     &__button {

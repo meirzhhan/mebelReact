@@ -25,16 +25,16 @@
       margin-right: 5px;
       cursor: pointer;
       background-color: $brown;
-      color: $white;
+      color: #fff;
       transition: all ease-in-out 0.1s;
       &:hover {
-        background-color: $white;
+        background-color: #fff;
         color: $brown;
       }
     }
 
     .activeButton {
-      background-color: $white;
+      background-color: #fff;
       color: $brown;
     }
   }

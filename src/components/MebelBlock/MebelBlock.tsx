@@ -3,13 +3,12 @@ import { TMebel } from '../redux/mebel/types';
 import { addItem } from '../redux/cart/slice';
 import { TCartItems } from '../redux/cart/types';
 import { selectCartItemById } from '../redux/cart/selectors';
+import { Link } from 'react-router-dom';
 
 const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => {
   const cartItm = useSelector(selectCartItemById(id));
 
   const dispatch = useDispatch();
-
-  const count = 5;
 
   const onClickAdd = () => {
     const item: TCartItems = {
@@ -18,7 +17,7 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
       title,
       price,
       sizes,
-      count,
+      count: 0,
     };
     !cartItm && dispatch(addItem(item));
   };
@@ -26,13 +25,13 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
   return (
     <div className="mebel-block-wrapper">
       <div className="mebel-block">
-        <a href="#">
+        <Link to={`/mebel/${id}`}>
           <div className="mebel-block__image__wrapper">
             <img className="mebel-block__image" src={imageUrl} alt="Mebel" />
           </div>
 
           <h4 className="mebel-block__title">{title}</h4>
-        </a>
+        </Link>
 
         <div className="mebel-block__selector">
           <ul>
@@ -44,7 +43,6 @@ const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => 
 
         <div className="mebel-block__bottom">
           <div className="mebel-block__price"> {price.toLocaleString()} ₸</div>
-          {/* <button  onClick={onClickAdd}  className="button button--outline button--add"> */}
           <button onClick={onClickAdd} className="mebel-block__button">
             <svg
               width="12"

@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ICartSliceState, TCartItems } from './types';
-import { count } from 'console';
 
 const initialState: ICartSliceState = {
   items: [],

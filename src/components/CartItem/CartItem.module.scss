@@ -1,16 +1,5 @@
 @import '../../scss/variables';
 
-@mixin reset {
-  appearance: none;
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  outline: none;
-  color: #c4c4c4;
-}
-
 .div {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -54,7 +43,7 @@
     &__button {
       margin-top: 10px;
       background-color: white;
-      border: 1px solid #c4c4c4;
+      border: 1px solid $c4;
       width: fit-content;
       display: flex;
       align-items: center;
@@ -94,12 +83,12 @@
   top: 50px;
 
   &__main {
-    border-top: 1px solid #c4c4c4;
+    border-top: 1px solid $c4;
     margin-top: 30px;
     padding: 20px 0;
     p {
       margin-bottom: 10px;
-      color: #c4c4c4;
+      color: $c4;
       font-size: 14px;
     }
 
@@ -114,7 +103,7 @@
       }
       &__price {
         font-size: 22px;
-        color: #c4c4c4;
+        color: $c4;
         margin-top: 5px;
         text-decoration: line-through;
       }

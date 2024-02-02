@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { TMebel, TSearchMebelParams } from './types';
 import axios from 'axios';
 
-export const fetchMebel = createAsyncThunk<TMebel[], TSearchMebelParams>(
+export const fetchMebels = createAsyncThunk<TMebel[], TSearchMebelParams>(
   'mebel/fetchMebelStatus',
   async (params) => {
     const { category, property, order, search } = params;
