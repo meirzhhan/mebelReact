@@ -17,33 +17,7 @@
     margin-top: 120px;
   }
 }
-
-.content__middle {
-  margin: 30px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $brown;
-  color: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  &-title {
-    font-size: 32px;
-    font-weight: bold;
-    @media (max-width: 1350px) {
-      font-size: 30px;
-    }
-    @media (max-width: 950px) {
-      font-size: 24px;
-    }
-  }
-  @media (max-width: 530px) {
-    &-title {
-      font-size: 20px;
-    }
-  }
-}
-
+//Pizzablock
 .content__items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -57,13 +31,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 // Gallery
 .gallery {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
   column-gap: 30px;
-
   &-wrapper {
     max-height: 315px;
     position: relative;
@@ -71,11 +43,9 @@
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
   }
   &__img {
-    width: 100%;
+    @include WidthAndRadius;
     height: 100%;
-    border-radius: 10px;
   }
-
   &__button {
     cursor: pointer;
     background-color: $creme;
@@ -83,9 +53,8 @@
     width: 15px;
     height: 15px;
     position: absolute;
-    transition: all ease-in-out 0.1s;
     box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.3);
-
+    transition: all ease-in-out 0.1s;
     &:hover {
       transform: scale(1.5);
       box-shadow: none;
@@ -115,7 +84,6 @@
 .cart {
   background-color: $creme;
   padding-top: 100px;
-
   &__container {
     @include container;
     display: grid;

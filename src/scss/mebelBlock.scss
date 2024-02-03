@@ -3,18 +3,15 @@
 .mebel-block {
   text-align: center;
   max-width: 100%;
-
   &__image {
     display: block;
     width: 100%;
     transition: ease-in-out 0.25s;
-
     &__wrapper {
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
     }
-
     &:hover {
       scale: 1.05;
       overflow: hidden;
@@ -28,7 +25,6 @@
     font-weight: 700;
     letter-spacing: 1%;
     margin: 15px 0;
-
     &:hover {
       font-weight: 800;
     }
@@ -39,7 +35,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       justify-items: center;
-
       li {
         width: 90%;
         background-color: #f3f3f3;
@@ -53,32 +48,27 @@
   }
 
   &__bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flexSpaceBetween;
+    @include flexAlignItems;
     margin-top: 20px;
   }
 
   &__button {
+    @include reset;
+    @include flexAlignItems;
     background-color: #4b3c38;
     color: #fff;
     border-radius: 10px;
-    border: none;
     padding: 10px 20px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-
     svg,
     span {
       margin-right: 5px;
     }
-
     i {
+      @include backgroundCreme;
+      display: block;
       border-radius: 30px;
-      color: $brown;
-      background-color: $creme;
-      display: inline-block;
       font-weight: 600;
       width: 22px;
       height: 22px;
@@ -87,16 +77,10 @@
       display: flex;
       justify-content: center;
     }
-
     &:hover {
-      background-color: $brown;
-
-      i {
-        background-color: white;
-      }
+      @include backgroundBrown;
     }
   }
-
   &__price {
     font-weight: bold;
     font-size: 22px;
@@ -112,7 +96,6 @@
         font-size: 12px;
       }
     }
-
     &__price {
       font-size: 20px;
     }
@@ -123,32 +106,38 @@
       font-size: 14px;
       margin: 8px 0;
     }
-
     &__selector ul li {
       font-size: 10px;
     }
-
     &__button {
       padding: 4px 8px;
-
       i {
         width: 16px;
         height: 16px;
         font-size: 10px;
         line-height: 17px;
       }
-
       span {
         font-size: 10px;
       }
     }
-
     &__price {
       font-size: 12px;
     }
-
     &__bottom {
       margin-top: 10px;
     }
+  }
+}
+
+.void {
+  @include backgroundCreme;
+  font-size: 22px;
+  padding: 35px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 400;
+  span {
+    font-weight: bold;
   }
 }

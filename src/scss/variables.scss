@@ -7,7 +7,6 @@ $c4: #c4c4c4;
   margin: 0 auto;
   padding: 0 12px;
 }
-
 @mixin reset {
   appearance: none;
   border: none;
@@ -16,5 +15,35 @@ $c4: #c4c4c4;
   margin: 0;
   cursor: pointer;
   outline: none;
+  color: $c4;
+}
+@mixin backgroundCreme {
+  background-color: $creme;
+  color: $brown;
+}
+@mixin backgroundBrown {
+  background-color: $brown;
+  color: #fff;
+}
+
+@mixin flexSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+@mixin flexAlignItems {
+  display: flex;
+  align-items: center;
+}
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin WidthAndRadius {
+  width: 100%;
+  border-radius: 10px;
+}
+@mixin lineThrough {
+  text-decoration: line-through;
   color: $c4;
 }

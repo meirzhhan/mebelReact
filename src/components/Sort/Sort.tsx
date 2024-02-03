@@ -28,34 +28,38 @@ const Sort: React.FC = memo(() => {
   return (
     // <div ref={sortRef} className="sort">
     <div className={cl.sort}>
-      <div className={cl.sort__label}>
-        <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{sortByType.name}</span>
-        <button
-          onClick={() => dispatch(setSortByOrder('asc'))}
-          className={sortByOrder === 'asc' ? `${cl.activeButton}` : ''}>
-          ↑
-        </button>
-        <button
-          onClick={() => dispatch(setSortByOrder('desc'))}
-          className={sortByOrder === 'desc' ? `${cl.activeButton}` : ''}>
-          ↓
-        </button>
-      </div>
-      {open && (
-        <div className={cl.sort__popup}>
-          <ul>
-            {sortList.map((obj, i) => (
-              <li
-                key={i}
-                onClick={() => onClickListItem(obj)}
-                className={sortByType.property === obj.property ? `${cl.active}` : ''}>
-                {obj.name}
-              </li>
-            ))}
-          </ul>
+      <div className={cl.sort__content}>
+        <h2 className={cl.sort__content__title}>Весь асортимент</h2>
+
+        <div className={cl.sort__label}>
+          <b>Сортировка по:</b>
+          <span onClick={() => setOpen(!open)}>{sortByType.name}</span>
+          <button
+            onClick={() => dispatch(setSortByOrder('asc'))}
+            className={sortByOrder === 'asc' ? `${cl.activeButton}` : ''}>
+            ↑
+          </button>
+          <button
+            onClick={() => dispatch(setSortByOrder('desc'))}
+            className={sortByOrder === 'desc' ? `${cl.activeButton}` : ''}>
+            ↓
+          </button>
         </div>
-      )}
+        {open && (
+          <div className={cl.sort__popup}>
+            <ul>
+              {sortList.map((obj, i) => (
+                <li
+                  key={i}
+                  onClick={() => onClickListItem(obj)}
+                  className={sortByType.property === obj.property ? `${cl.active}` : ''}>
+                  {obj.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 });

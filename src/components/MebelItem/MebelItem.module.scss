@@ -4,8 +4,7 @@
   margin: 0 auto;
   width: 50%;
   img {
-    width: 100%;
-    border-radius: 10px;
+    @include WidthAndRadius;
   }
   h4 {
     font-size: 30px;
@@ -19,19 +18,16 @@
     font-size: 24px;
   }
   &__price {
-    text-decoration: line-through;
-    color: $c4;
+    @include lineThrough;
     font-size: 18px;
   }
   button {
     @include reset;
-    color: white;
-    background-color: $brown;
+    @include WidthAndRadius;
+    @include backgroundBrown;
     padding: 5px;
-    border-radius: 10px;
     margin-top: 25px;
     font-size: 18px;
-    width: 100%;
   }
 
   @media (max-width: 1100px) {

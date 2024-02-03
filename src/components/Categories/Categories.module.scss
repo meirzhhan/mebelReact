@@ -8,8 +8,7 @@
     margin-bottom: 10px;
   }
   ul {
-    display: flex;
-    justify-content: space-between;
+    @include flexSpaceBetween;
     li {
       background-color: $creme;
       border-radius: 10px;
@@ -25,9 +24,6 @@
         border-radius: 10px;
         img {
           width: 150px;
-          @media (max-width: 1300px) {
-            width: 150px;
-          }
         }
       }
     }

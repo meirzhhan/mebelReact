@@ -5,6 +5,7 @@ import Sort from '../Sort/Sort';
 import Categories from '../Categories/Categories';
 import MebelBlock from '../MebelBlock/MebelBlock';
 import MebelSkeleton from '../MebelBlock/MebelSkeleton';
+import MebelVoid from '../MebelBlock/MebelVoid';
 
 import { useAppDispatch } from '../redux/store';
 import { fetchMebels } from '../redux/mebel/asyncActions';
@@ -18,8 +19,7 @@ const Home = () => {
   const isSearch = useRef(false);
   const { items, status } = useSelector(selectMebelState);
 
-  // получение  фильтра из хранилища
-  const { categoryId, sortByType, sortByOrder, searchValue } = useSelector(selectFilterState);
+  const { categoryId, sortByType, sortByOrder, searchValue } = useSelector(selectFilterState); // получение  фильтра из хранилища
 
   //  функция для получения мебели при изменении категории
   const onChangeCategory = useCallback(
@@ -30,7 +30,7 @@ const Home = () => {
   );
 
   // Запрос на мокапи для получении данных
-  const getMebel = async () => {
+  const getMebels = async () => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const property = `&sortBy=${sortByType.property}`;
     const order = `&order=${sortByOrder}`;
@@ -49,7 +49,7 @@ const Home = () => {
   // Если что-то  поменялось в фильтре - делаем запрос
   useEffect(() => {
     if (!isSearch.current) {
-      getMebel();
+      getMebels();
     }
     // isSearch.current = true;
   }, [categoryId, sortByType, sortByOrder, searchValue]);
@@ -58,17 +58,14 @@ const Home = () => {
     <div className="container">
       <Gallery />
       <Categories value={categoryId} onChangeCategory={onChangeCategory} />
-      <div className="content__middle">
-        <h2 className="content__middle-title">Весь асортимент</h2>
-        <Sort />
-      </div>
+      <Sort />
 
       {status === 'error' ? (
-        <div>lol</div>
+        <MebelVoid />
       ) : (
         <div className="content__items">
           {status === 'loading'
-            ? [...new Array(8)].map((_, id) => <MebelSkeleton key={id} />)
+            ? [...new Array(12)].map((_, id) => <MebelSkeleton key={id} />)
             : items.map((items) => <MebelBlock key={items.id} {...items} />)}
         </div>
       )}
