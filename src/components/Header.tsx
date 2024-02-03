@@ -1,13 +1,29 @@
-import { Link, useLocation } from 'react-router-dom';
 import logoSvg from '../assets/mebel.png';
+
+import { Link, useLocation } from 'react-router-dom';
+
 import Search from './HeaderSearch/Search';
+
 import { useSelector } from 'react-redux';
 import { selectCartState } from './redux/cart/selectors';
+import { useEffect, useRef } from 'react';
 
 const Header = () => {
   const { items, totalPrice } = useSelector(selectCartState);
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
-  // const location = useLocation();
+  const location = useLocation();
+
+  const isMounted = useRef<boolean>(false); // Для первого  рендера
+  // Сохраняет item в localStorage при изменении его значения
+  useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem('cart', json);
+    }
+
+    isMounted.current = true;
+  }, [items, totalPrice]);
+
   return (
     <div className="header">
       <div className="container">
@@ -19,8 +35,7 @@ const Header = () => {
             </div>
           </div>
         </Link>
-        <Search />
-        {/* {location.pathname !== '/cart' && ( */}
+        {location.pathname !== '/cart' && <Search />}
         <Link to="/cart" className="header__button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path
@@ -36,7 +51,6 @@ const Header = () => {
           <div></div>
           <span>{totalCount}</span>
         </Link>
-        {/* )} */}
       </div>
     </div>
   );

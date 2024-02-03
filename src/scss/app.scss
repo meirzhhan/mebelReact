@@ -135,3 +135,37 @@
     padding-top: 80px;
   }
 }
+
+// NotFound
+.notFound {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  img {
+    width: 60%;
+  }
+  h4 {
+    font-size: 32px;
+    margin-top: 20px;
+  }
+  p {
+    margin: 15px 0;
+  }
+  a {
+    color: $brown;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  @media (max-width: 640px) {
+    font-size: 14px;
+    img {
+      width: 80%;
+    }
+    h4 {
+      font-size: 30px;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import cl from './Categories.module.scss';
 
 type TCategoriesProps = {
@@ -5,7 +6,7 @@ type TCategoriesProps = {
   onChangeCategory: (i: number) => void;
 };
 
-const Categories: React.FC<TCategoriesProps> = ({ value, onChangeCategory }) => {
+const Categories: React.FC<TCategoriesProps> = memo(({ value, onChangeCategory }) => {
   const categories: { type: string; img: string }[] = [
     {
       type: 'Поплуярные',
@@ -52,6 +53,6 @@ const Categories: React.FC<TCategoriesProps> = ({ value, onChangeCategory }) => 
       </ul>
     </div>
   );
-};
+});
 
 export default Categories;

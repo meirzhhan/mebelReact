@@ -1,4 +1,5 @@
 import ContentLoader from 'react-content-loader';
+// React skeleton
 
 const MebelSkeleton = () => {
   return (

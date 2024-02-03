@@ -1,9 +1,9 @@
-import { useDispatch } from 'react-redux';
+import { ChangeEvent, useEffect, useState } from 'react';
+
 import cl from './Search.module.scss';
 
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { setSearchValue } from '../redux/filter/slice';
-// import { setCategoryId } from '../redux/filter/slice';
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Search = () => {
     setValue(event.target.value);
   };
 
-  // debounce
+  // debounce. локальный стейт кидается в стор с задержкой
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       dispatch(setSearchValue(value));

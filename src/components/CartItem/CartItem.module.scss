@@ -29,6 +29,9 @@
     &__button {
       @include reset;
       font-size: 16px;
+      &:hover {
+        color: $brown;
+      }
     }
   }
 
@@ -42,7 +45,7 @@
 
     &__button {
       margin-top: 10px;
-      background-color: white;
+      background-color: #ffffff;
       border: 1px solid $c4;
       width: fit-content;
       display: flex;
@@ -72,10 +75,8 @@
 }
 
 //total
-
 .total {
   margin: 0 auto;
-  // height: 100%;
   padding: 30px;
   position: sticky;
   width: 250px;

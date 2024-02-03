@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
 
 import cl from './MebelItem.module.scss';
+
+import axios from 'axios';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '../redux/cart/slice';
 import { TCartItems } from '../redux/cart/types';
+import { addItem } from '../redux/cart/slice';
 import { selectCartItemById } from '../redux/cart/selectors';
 
 const MebelItem = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // берет id  из параметров url
-  const { id } = useParams();
-  // локальный стейт для сохранения  данных о мебели
-  const [mebel, setMebel] = useState<TCartItems>();
-  // для проверки  наличия товара в корзине
+  const { id } = useParams(); // берет id из url
+  const [mebel, setMebel] = useState<TCartItems>(); // локальный стейт для сохранения  данных о мебели
+
+  // для проверки  наличия товара в корзине. 0 стоит для исключения неинициализированного состояния
   const cartItm = useSelector(selectCartItemById(id || '0'));
+
   //  запрос на сервер при первом рендере компонента, выполняется 1 раз
   useEffect(() => {
     async function fetchMebel() {

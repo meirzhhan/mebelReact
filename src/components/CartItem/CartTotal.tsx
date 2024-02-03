@@ -1,4 +1,5 @@
 import cl from './CartItem.module.scss';
+
 type TTotal = {
   totalCount: number;
   totalPrice: number;

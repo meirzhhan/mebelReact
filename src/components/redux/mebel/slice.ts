@@ -1,6 +1,7 @@
+import { fetchMebels } from './asyncActions';
+
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IMebelSliceState, Status, TMebel } from './types';
-import { fetchMebels } from './asyncActions';
 
 const initialState: IMebelSliceState = {
   items: [],
@@ -17,6 +18,7 @@ const mebelSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // кейс  успешного запроса данных
       .addCase(fetchMebels.pending, (state) => {
         state.status = Status.LOADING;
         state.items = [];

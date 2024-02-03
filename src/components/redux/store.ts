@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+
 import mebelData from './mebel/slice';
 import filter from './filter/slice';
 import cart from './cart/slice';
@@ -12,6 +13,6 @@ export const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch: () => AppDispatch = useDispatch;
+export type RootState = ReturnType<typeof store.getState>; // тип  для доступа к состоянию хранилища
+export type AppDispatch = typeof store.dispatch; // тип  диспатча для использования в хуках Redux Toolkit
+export const useAppDispatch: () => AppDispatch = useDispatch; //  создание глобального хука для получения диспатча

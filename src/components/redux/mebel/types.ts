@@ -16,7 +16,6 @@ export type TSearchMebelParams = {
   // currentPage: string;
 };
 
-//
 export enum Status {
   LOADING = 'loading',
   SUCCESS = 'success',

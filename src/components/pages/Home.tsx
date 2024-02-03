@@ -1,24 +1,27 @@
 import { useCallback, useEffect, useRef } from 'react';
+
+import Gallery from '../Gallery';
+import Sort from '../Sort/Sort';
 import Categories from '../Categories/Categories';
-import { useSelector } from 'react-redux';
-import { fetchMebels } from '../redux/mebel/asyncActions';
-import { useAppDispatch } from '../redux/store';
 import MebelBlock from '../MebelBlock/MebelBlock';
+import MebelSkeleton from '../MebelBlock/MebelSkeleton';
+
+import { useAppDispatch } from '../redux/store';
+import { fetchMebels } from '../redux/mebel/asyncActions';
+import { useSelector } from 'react-redux';
 import { selectMebelState } from '../redux/mebel/selectors';
 import { selectFilterState } from '../redux/filter/selectors';
 import { setCategoryId } from '../redux/filter/slice';
-import Sort from '../Sort/Sort';
-import MebelSkeleton from '../MebelBlock/MebelSkeleton';
-import Gallery from '../Gallery';
 
 const Home = () => {
   const dispatch = useAppDispatch();
   const isSearch = useRef(false);
-
   const { items, status } = useSelector(selectMebelState);
+
+  // получение  фильтра из хранилища
   const { categoryId, sortByType, sortByOrder, searchValue } = useSelector(selectFilterState);
 
-  //
+  //  функция для получения мебели при изменении категории
   const onChangeCategory = useCallback(
     (id: number) => {
       dispatch(setCategoryId(id));
@@ -43,7 +46,7 @@ const Home = () => {
     );
   };
 
-  // Если  категория изменилась - запрашиваем новые мебельные бло
+  // Если что-то  поменялось в фильтре - делаем запрос
   useEffect(() => {
     if (!isSearch.current) {
       getMebel();

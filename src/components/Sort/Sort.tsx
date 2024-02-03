@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectFilterState } from '../redux/filter/selectors';
+import React, { memo, useState } from 'react';
 
 import cl from './Sort.module.scss';
-import { setSortByOrder, setSortByType } from '../redux/filter/slice';
+
 import { TSort } from '../redux/filter/types';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFilterState } from '../redux/filter/selectors';
+import { setSortByOrder, setSortByType } from '../redux/filter/slice';
 
 const sortList = [
   { name: 'рейтингу', property: 'rating' },
@@ -12,7 +14,7 @@ const sortList = [
   { name: 'алфавиту', property: 'title' },
 ];
 
-const Sort: React.FC = () => {
+const Sort: React.FC = memo(() => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState<boolean>(false); //  открыто ли меню сортировки или нет
   const { sortByType, sortByOrder } = useSelector(selectFilterState); //  получение типа сортировки из редаксТК
@@ -56,6 +58,6 @@ const Sort: React.FC = () => {
       )}
     </div>
   );
-};
+});
 
 export default Sort;

@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import Cart from './components/pages/Cart';
 import MebelFull from './components/pages/MebelFull';
+import NotFound from './components/pages/NotFound';
 
 function App() {
   return (
@@ -27,6 +28,14 @@ function App() {
           element={
             <Suspense fallback={<div></div>}>
               <MebelFull />
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<div></div>}>
+              <NotFound />
             </Suspense>
           }
         />

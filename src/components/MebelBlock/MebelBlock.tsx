@@ -1,15 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { TMebel } from '../redux/mebel/types';
-import { addItem } from '../redux/cart/slice';
-import { TCartItems } from '../redux/cart/types';
-import { selectCartItemById } from '../redux/cart/selectors';
 import { Link } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { TCartItems } from '../redux/cart/types';
+import { TMebel } from '../redux/mebel/types';
+import { selectCartItemById } from '../redux/cart/selectors';
+import { addItem } from '../redux/cart/slice';
+
 const MebelBlock: React.FC<TMebel> = ({ id, imageUrl, title, sizes, price }) => {
-  const cartItm = useSelector(selectCartItemById(id));
-
   const dispatch = useDispatch();
-
+  //  проверка  наличия товара в корзине по его ID
+  const cartItm = useSelector(selectCartItemById(id));
+  // функция для  добавления товара в корзину, срабатывает лишь 1 раз
   const onClickAdd = () => {
     const item: TCartItems = {
       id,

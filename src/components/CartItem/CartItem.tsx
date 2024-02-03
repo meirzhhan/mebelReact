@@ -1,14 +1,15 @@
 import React from 'react';
-import { addItem, minusItem, removeItem } from '../redux/cart/slice';
-import { TCartItems } from '../redux/cart/types';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import cl from './CartItem.module.scss';
 
+import { useDispatch } from 'react-redux';
+import { TCartItems } from '../redux/cart/types';
+import { addItem, minusItem, removeItem } from '../redux/cart/slice';
+
 const CartItem: React.FC<TCartItems> = ({ id, imageUrl, title, sizes, price, count }) => {
   const dispatch = useDispatch();
-
+  // увеличение, уменьшение  и удаление товара из корзины
   const onClickPlus = () => {
     dispatch(addItem({ id, price } as TCartItems));
   };
