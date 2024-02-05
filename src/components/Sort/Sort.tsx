@@ -2,8 +2,6 @@ import React, { memo, useState } from 'react';
 
 import cl from './Sort.module.scss';
 
-import { TSort } from '../redux/filter/types';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilterState } from '../redux/filter/selectors';
 import { setSortByOrder, setSortByType } from '../redux/filter/slice';
@@ -20,10 +18,13 @@ const Sort: React.FC = memo(() => {
   const { sortByType, sortByOrder } = useSelector(selectFilterState); //  получение типа сортировки из редаксТК
 
   //   функция для выбора типа сортировки. Передает тип сортировки в редакс и закрывает окно
-  const onClickListItem = (obj: TSort) => {
+  const onClickListItem = (obj: string) => {
     dispatch(setSortByType(obj));
     setOpen(false);
   };
+
+  const sortName =
+    sortByType === 'rating' ? 'рейтингу' : sortByType === 'price' ? 'цене' : 'алфавиту';
 
   return (
     // <div ref={sortRef} className="sort">
@@ -33,7 +34,7 @@ const Sort: React.FC = memo(() => {
 
         <div className={cl.sort__label}>
           <b>Сортировка по:</b>
-          <span onClick={() => setOpen(!open)}>{sortByType.name}</span>
+          <span onClick={() => setOpen(!open)}>{sortName}</span>
           <button
             onClick={() => dispatch(setSortByOrder('asc'))}
             className={sortByOrder === 'asc' ? `${cl.activeButton}` : ''}>
@@ -51,8 +52,8 @@ const Sort: React.FC = memo(() => {
               {sortList.map((obj, i) => (
                 <li
                   key={i}
-                  onClick={() => onClickListItem(obj)}
-                  className={sortByType.property === obj.property ? `${cl.active}` : ''}>
+                  onClick={() => onClickListItem(obj.property)}
+                  className={sortByType === obj.property ? `${cl.active}` : ''}>
                   {obj.name}
                 </li>
               ))}

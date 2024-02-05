@@ -1,11 +1,6 @@
-export type TSort = {
-  name: string;
-  property: string;
-};
-
-export interface IFilterSliceState {
+export interface TFilterSliceState {
   categoryId: number;
-  sortByType: TSort;
+  sortByType: string;
   sortByOrder: string;
-  searchValue: string;
+  searchValue?: string;
 }

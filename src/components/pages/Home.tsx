@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Gallery from '../Gallery';
 import Sort from '../Sort/Sort';
@@ -7,21 +8,26 @@ import MebelBlock from '../MebelBlock/MebelBlock';
 import MebelSkeleton from '../MebelBlock/MebelSkeleton';
 import MebelVoid from '../MebelBlock/MebelVoid';
 
+import QueryString from 'qs';
+
 import { useAppDispatch } from '../redux/store';
 import { fetchMebels } from '../redux/mebel/asyncActions';
 import { useSelector } from 'react-redux';
 import { selectMebelState } from '../redux/mebel/selectors';
 import { selectFilterState } from '../redux/filter/selectors';
-import { setCategoryId } from '../redux/filter/slice';
+import { setCategoryId, setFilters } from '../redux/filter/slice';
+import { TFilterSliceState } from '../redux/filter/types';
 
 const Home = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const isSearch = useRef(false);
+  const isMounted = useRef(false);
+
   const { items, status } = useSelector(selectMebelState);
+  const { categoryId, sortByType, sortByOrder, searchValue } = useSelector(selectFilterState); // получение параметров фильтра из хранилища
 
-  const { categoryId, sortByType, sortByOrder, searchValue } = useSelector(selectFilterState); // получение  фильтра из хранилища
-
-  //  функция для получения мебели при изменении категории
+  // функция для изменении категории
   const onChangeCategory = useCallback(
     (id: number) => {
       dispatch(setCategoryId(id));
@@ -29,10 +35,40 @@ const Home = () => {
     [dispatch],
   );
 
-  // Запрос на мокапи для получении данных
-  const getMebels = async () => {
+  // При первом рендере берутся параметры из url и устанавливаются в store если они есть.
+  useEffect(() => {
+    if (window.location.search) {
+      const params = QueryString.parse(window.location.search.substring(1)); //  убираем первый символ '?'
+      dispatch(
+        setFilters({
+          ...params,
+        } as unknown as TFilterSliceState),
+      );
+
+      console.log(params);
+      isSearch.current = true;
+    }
+  }, [dispatch]);
+
+  // При изменении фильтра, параметры вшиваются в url
+  useEffect(() => {
+    if (isMounted.current) {
+      const qs = QueryString.stringify({
+        categoryId: categoryId > 0 ? categoryId : 0,
+        sortByType,
+        sortByOrder,
+        // currentPage
+      });
+      console.log(qs);
+      navigate(`?${qs}`);
+    }
+    isMounted.current = true;
+  }, [categoryId, sortByType, sortByOrder, navigate]);
+
+  // get запрос на мокапи для получении данных
+  const getMebels = useCallback(async () => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
-    const property = `&sortBy=${sortByType.property}`;
+    const property = `&sortBy=${sortByType}`;
     const order = `&order=${sortByOrder}`;
     const search = `&title=${searchValue}`;
 
@@ -44,15 +80,15 @@ const Home = () => {
         search,
       }),
     );
-  };
+  }, [categoryId, sortByType, sortByOrder, searchValue, dispatch]);
 
-  // Если что-то  поменялось в фильтре - делаем запрос
+  // get запрос при первом  рендере и при изменении зависимостей
   useEffect(() => {
     if (!isSearch.current) {
       getMebels();
     }
-    // isSearch.current = true;
-  }, [categoryId, sortByType, sortByOrder, searchValue]);
+    isSearch.current = false;
+  }, [categoryId, sortByType, sortByOrder, searchValue, getMebels]);
 
   return (
     <div className="container">
