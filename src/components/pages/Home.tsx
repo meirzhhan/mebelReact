@@ -48,7 +48,7 @@ const Home = () => {
   const onChangeCategory = useCallback(
     (id: number) => {
       dispatch(setCategoryId(id));
-      dispatch(setCurrentPage('1'));
+      dispatch(setCurrentPage('1')); //  устанавливает первую страницу при смене категории
     },
     [dispatch],
   );

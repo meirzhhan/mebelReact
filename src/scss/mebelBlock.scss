@@ -48,18 +48,6 @@
       margin: 0 5px;
       font-size: 14px;
     }
-    i {
-      @include backgroundCreme;
-      display: block;
-      border-radius: 30px;
-      font-weight: 600;
-      width: 22px;
-      height: 22px;
-      font-size: 13px;
-      line-height: 22px;
-      display: flex;
-      justify-content: center;
-    }
     &:hover {
       @include backgroundBrown;
     }

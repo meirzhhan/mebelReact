@@ -6,11 +6,13 @@ import { Suspense } from 'react';
 import Cart from './components/pages/Cart';
 import MebelFull from './components/pages/MebelFull';
 import NotFound from './components/pages/NotFound';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
       <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -40,6 +42,8 @@ function App() {
           }
         />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
