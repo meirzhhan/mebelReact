@@ -4,11 +4,13 @@ import { Link, useLocation } from 'react-router-dom';
 
 import Search from './HeaderSearch/Search';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCartState } from './redux/cart/selectors';
 import { useEffect, useRef } from 'react';
+import { resetFilters } from './redux/filter/slice';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { items, totalPrice } = useSelector(selectCartState);
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
   const location = useLocation();
@@ -27,7 +29,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="container">
-        <Link to="/">
+        <Link to="/" onClick={() => dispatch(resetFilters())}>
           <div className="header__logo">
             <img width="38" src={logoSvg} alt="Mebel logo" />
             <div className="header__logo-h1">

@@ -38,8 +38,9 @@ const filterSlice = createSlice({
       state.categoryId = Number(action.payload.categoryId);
       state.sortByType = action.payload.sortByType;
       state.sortByOrder = action.payload.sortByOrder;
-
-      // state.sortByType = action.payload;
+    },
+    resetFilters: (state) => {
+      return initialState;
     },
   },
 });
@@ -52,5 +53,6 @@ export const {
   setFilters,
   setCurrentPage,
   setXTotalCount,
+  resetFilters,
 } = filterSlice.actions;
 export default filterSlice.reducer;
