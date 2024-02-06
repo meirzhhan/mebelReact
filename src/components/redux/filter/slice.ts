@@ -6,6 +6,8 @@ const initialState: TFilterSliceState = {
   sortByType: 'rating',
   sortByOrder: 'asc',
   searchValue: '',
+  currentPage: '1',
+  xTotalCount: 18,
 };
 
 const filterSlice = createSlice({
@@ -25,7 +27,14 @@ const filterSlice = createSlice({
     setSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     },
+    setCurrentPage: (state, action: PayloadAction<string>) => {
+      state.currentPage = action.payload;
+    },
+    setXTotalCount: (state, action: PayloadAction<number>) => {
+      state.xTotalCount = action.payload;
+    },
     setFilters: (state, action: PayloadAction<TFilterSliceState>) => {
+      state.currentPage = action.payload.currentPage;
       state.categoryId = Number(action.payload.categoryId);
       state.sortByType = action.payload.sortByType;
       state.sortByOrder = action.payload.sortByOrder;
@@ -35,6 +44,13 @@ const filterSlice = createSlice({
   },
 });
 
-export const { setCategoryId, setSortByType, setSortByOrder, setSearchValue, setFilters } =
-  filterSlice.actions;
+export const {
+  setCategoryId,
+  setSortByType,
+  setSortByOrder,
+  setSearchValue,
+  setFilters,
+  setCurrentPage,
+  setXTotalCount,
+} = filterSlice.actions;
 export default filterSlice.reducer;

@@ -7,6 +7,7 @@ import Categories from '../Categories/Categories';
 import MebelBlock from '../MebelBlock/MebelBlock';
 import MebelSkeleton from '../MebelBlock/MebelSkeleton';
 import MebelVoid from '../MebelBlock/MebelVoid';
+import Pagination from '../Pagination/Pagination';
 
 import QueryString from 'qs';
 
@@ -15,7 +16,7 @@ import { fetchMebels } from '../redux/mebel/asyncActions';
 import { useSelector } from 'react-redux';
 import { selectMebelState } from '../redux/mebel/selectors';
 import { selectFilterState } from '../redux/filter/selectors';
-import { setCategoryId, setFilters } from '../redux/filter/slice';
+import { setCategoryId, setCurrentPage, setFilters } from '../redux/filter/slice';
 import { TFilterSliceState } from '../redux/filter/types';
 
 const Home = () => {
@@ -23,9 +24,16 @@ const Home = () => {
   const navigate = useNavigate();
   const isSearch = useRef(false);
   const isMounted = useRef(false);
+  const itemsPerPage = 8;
 
   const { items, status } = useSelector(selectMebelState);
-  const { categoryId, sortByType, sortByOrder, searchValue } = useSelector(selectFilterState); // получение параметров фильтра из хранилища
+  const { categoryId, sortByType, sortByOrder, searchValue, currentPage } =
+    useSelector(selectFilterState); // получение параметров фильтра из хранилища
+
+  // для изменения текущей страницы пагинации
+  const onchangePage = (page: number) => {
+    dispatch(setCurrentPage(String(page)));
+  };
 
   // функция для изменении категории
   const onChangeCategory = useCallback(
@@ -45,7 +53,6 @@ const Home = () => {
         } as unknown as TFilterSliceState),
       );
 
-      console.log(params);
       isSearch.current = true;
     }
   }, [dispatch]);
@@ -54,33 +61,34 @@ const Home = () => {
   useEffect(() => {
     if (isMounted.current) {
       const qs = QueryString.stringify({
+        currentPage,
         categoryId: categoryId > 0 ? categoryId : 0,
         sortByType,
         sortByOrder,
-        // currentPage
       });
-      console.log(qs);
       navigate(`?${qs}`);
     }
     isMounted.current = true;
-  }, [categoryId, sortByType, sortByOrder, navigate]);
+  }, [categoryId, sortByType, sortByOrder, currentPage, navigate]);
 
   // get запрос на мокапи для получении данных
   const getMebels = useCallback(async () => {
-    const category = categoryId > 0 ? `category=${categoryId}` : '';
+    const page = `page=${currentPage}`;
+    const category = categoryId > 0 ? `&category=${categoryId}` : '';
     const property = `&sortBy=${sortByType}`;
     const order = `&order=${sortByOrder}`;
-    const search = `&title=${searchValue}`;
+    const search = searchValue ? `&search=${searchValue}` : '';
 
     dispatch(
       fetchMebels({
+        page,
         category,
         property,
         order,
         search,
       }),
     );
-  }, [categoryId, sortByType, sortByOrder, searchValue, dispatch]);
+  }, [currentPage, categoryId, sortByType, sortByOrder, searchValue, dispatch]);
 
   // get запрос при первом  рендере и при изменении зависимостей
   useEffect(() => {
@@ -88,7 +96,7 @@ const Home = () => {
       getMebels();
     }
     isSearch.current = false;
-  }, [categoryId, sortByType, sortByOrder, searchValue, getMebels]);
+  }, [currentPage, categoryId, sortByType, sortByOrder, searchValue, getMebels]);
 
   return (
     <div className="container">
@@ -105,6 +113,12 @@ const Home = () => {
             : items.map((items) => <MebelBlock key={items.id} {...items} />)}
         </div>
       )}
+
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={items.length}
+        onchangePage={onchangePage}
+      />
     </div>
   );
 };
