@@ -4,9 +4,9 @@ import Home from './components/pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import Cart from './components/pages/Cart';
-import MebelFull from './components/pages/MebelFull';
 import NotFound from './components/pages/NotFound';
 import Footer from './components/Footer/Footer';
+import MebelFull from './components/pages/MebelFull';
 
 function App() {
   return (
