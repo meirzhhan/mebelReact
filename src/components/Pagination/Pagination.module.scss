@@ -1,0 +1,17 @@
+@import '../../scss/variables';
+
+.pagination {
+  display: flex;
+
+  li {
+    @include backgroundCreme;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 15px;
+    margin-right: 15px;
+  }
+
+  .active {
+    @include backgroundBrown;
+  }
+}

@@ -19,20 +19,29 @@ import { selectFilterState } from '../redux/filter/selectors';
 import { setCategoryId, setCurrentPage, setFilters } from '../redux/filter/slice';
 import { TFilterSliceState } from '../redux/filter/types';
 
+export const itemsPerPage = 8;
+
 const Home = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isSearch = useRef(false);
   const isMounted = useRef(false);
-  const itemsPerPage = 8;
 
   const { items, status } = useSelector(selectMebelState);
-  const { categoryId, sortByType, sortByOrder, searchValue, currentPage } =
+  const { categoryId, sortByType, sortByOrder, searchValue, currentPage, xTotalCount } =
     useSelector(selectFilterState); // получение параметров фильтра из хранилища
+
+  const pageLength = Math.ceil(xTotalCount / itemsPerPage);
 
   // для изменения текущей страницы пагинации
   const onchangePage = (page: number) => {
-    dispatch(setCurrentPage(String(page)));
+    if (page === 0) {
+      dispatch(setCurrentPage(String(pageLength)));
+    } else if (page === pageLength + 1) {
+      dispatch(setCurrentPage('1'));
+    } else {
+      dispatch(setCurrentPage(String(page)));
+    }
   };
 
   // функция для изменении категории
@@ -114,11 +123,7 @@ const Home = () => {
         </div>
       )}
 
-      <Pagination
-        itemsPerPage={itemsPerPage}
-        totalItems={items.length}
-        onchangePage={onchangePage}
-      />
+      <Pagination pageLength={pageLength} totalItems={items.length} onchangePage={onchangePage} />
     </div>
   );
 };
