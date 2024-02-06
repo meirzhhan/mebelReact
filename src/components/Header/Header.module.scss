@@ -1,4 +1,4 @@
-@import './variables';
+@import '../../scss/variables';
 
 .header {
   position: fixed;
@@ -10,7 +10,7 @@
   background-color: $brown;
   margin-bottom: 25px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-  .container {
+  &__container {
     @include container;
     @include flexSpaceBetween;
     @include flexAlignItems;

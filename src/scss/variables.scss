@@ -52,3 +52,32 @@ $c4: #c4c4c4;
   text-decoration: line-through;
   color: $c4;
 }
+
+@mixin cartMarginWidth {
+  color: $brown;
+  margin: 0 auto;
+  width: 50%;
+}
+
+@mixin cartH {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+@mixin cartButton {
+  @include reset;
+  @include WidthAndRadius;
+  @include backgroundBrown;
+  padding: 5px;
+  font-size: 18px;
+}
+@mixin cartMedia {
+  @media (max-width: 1100px) {
+    width: 60%;
+  }
+  @media (max-width: 800px) {
+    width: 90%;
+    h4 {
+      font-size: 24px;
+    }
+  }
+}

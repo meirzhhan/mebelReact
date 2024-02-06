@@ -35,7 +35,7 @@ const CartItem: React.FC<TCartItems> = ({ id, imageUrl, title, sizes, price, cou
 
         <div className={cl.info__middle}>
           <span className={cl.info__middle__span}>
-            Размеры: {sizes.map((i) => `${i} см `).join(' х ')}
+            Размеры: {sizes && sizes.map((i) => `${i} см `).join(' х ')}
           </span>
 
           <span className={cl.info__middle__span}>Цвет: {}</span>

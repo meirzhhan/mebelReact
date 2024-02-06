@@ -1,13 +1,15 @@
-import logoSvg from '../assets/mebel.png';
+import logoSvg from '../../assets/mebel.png';
+
+import cl from './Header.module.scss';
 
 import { Link, useLocation } from 'react-router-dom';
 
-import Search from './HeaderSearch/Search';
+import Search from '../HeaderSearch/Search';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCartState } from './redux/cart/selectors';
+import { selectCartState } from '../redux/cart/selectors';
 import { useEffect, useRef } from 'react';
-import { resetFilters } from './redux/filter/slice';
+import { resetFilters } from '../redux/filter/slice';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -27,18 +29,14 @@ const Header = () => {
   }, [items, totalPrice]);
 
   return (
-    <div className="header">
-      <div className="container">
-        <Link to="/" onClick={() => dispatch(resetFilters())}>
-          <div className="header__logo">
-            <img width="38" src={logoSvg} alt="Mebel logo" />
-            <div className="header__logo-h1">
-              <h1>Е-Мебель</h1>
-            </div>
-          </div>
+    <div className={cl.header}>
+      <div className={cl.header__container}>
+        <Link to="/" className={cl.header__logo} onClick={() => dispatch(resetFilters())}>
+          <img width="38" src={logoSvg} alt="Mebel logo" />
+          <h1>Е-Мебель</h1>
         </Link>
         {location.pathname !== '/cart' && <Search />}
-        <Link to="/cart" className="header__button">
+        <Link to="/cart" className={cl.header__button}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path
               d="M24,23a3,3,0,1,0,3,3A3.0033,3.0033,0,0,0,24,23Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,24,27Z"
@@ -50,7 +48,6 @@ const Header = () => {
               d="M18,11a1,1,0,0,0-1,1v1H16a1,1,0,0,0,0,2h1v1a1,1,0,0,0,2,0V15h1a1,1,0,0,0,0-2H19V12A1,1,0,0,0,18,11Z"
               fill="#fff"></path>
           </svg>
-          <div></div>
           <span>{totalCount}</span>
         </Link>
       </div>

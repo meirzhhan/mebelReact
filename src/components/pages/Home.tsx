@@ -119,7 +119,7 @@ const Home = () => {
       ) : (
         <div className="content__items">
           {status === 'loading'
-            ? [...new Array(12)].map((_, id) => <MebelSkeleton key={id} />)
+            ? [...new Array(8)].map((_, id) => <MebelSkeleton key={id} />)
             : items.map((items) => <MebelBlock key={items.id} {...items} />)}
         </div>
       )}

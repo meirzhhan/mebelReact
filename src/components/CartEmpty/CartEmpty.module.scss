@@ -1,6 +1,8 @@
 @import '../../scss/variables';
-.mebel {
+
+.cart {
   @include cartMarginWidth;
+  text-align: center;
   img {
     @include WidthAndRadius;
   }
@@ -9,25 +11,11 @@
   }
   p {
     margin: 5px 0;
-  }
-  &__discount {
-    color: $red;
-    font-size: 24px;
-  }
-  &__price {
-    @include lineThrough;
     font-size: 18px;
   }
   button {
     @include cartButton;
-    margin-top: 25px;
+    margin: 25px 0;
   }
-
   @include cartMedia;
-}
-
-.mebelContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
